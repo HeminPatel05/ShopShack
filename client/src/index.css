@@ -35,3 +35,46 @@
   font-variation-settings:
     "wdth" 100;
 } */
+
+.navbar {
+  font-family: "Poppins", sans-serif;
+  /* font-weight: 400;
+  font-style: normal; */
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px gray;
+  --webkit-box-shadow: 0 8px 6px -6px gray;
+  border-bottom: solid gray !important;
+}
+
+.navlink {
+  font-weight: 300 !important;
+}
+
+.active {
+  border-bottom: 1px solid black;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-family: "roboto", sans-serif;
+  letter-spacing: 3px;
+}
+
+.footer {
+  color: white;
+  padding: 25px;
+  background-color: black;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
