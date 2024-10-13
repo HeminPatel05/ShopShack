@@ -3,33 +3,25 @@ import Layout from "../../components/Layouts/Layout";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/auth";
 
-const Login = () => {
+const Forgotpassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [auth, setAuth] = useAuth();
+  const [newPassword, setNewPassword] = useState("");
+  const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/auth/login`,
-        { email, password }
+        `${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,
+        { email, newPassword, answer }
       );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        setAuth({
-          ...auth,
-          user: res.data.user,
-          token: res.data.token,
-        });
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/");
+        navigate("/login");
       } else {
         toast.error(res.data.message);
       }
@@ -38,11 +30,10 @@ const Login = () => {
       toast.error("something went wrong");
     }
   };
-
   return (
-    <Layout title="Login - Ecommerce App">
+    <Layout title={"Forgot Password - Ecommerce"}>
       <div className="register">
-        <h1>Login Page</h1>
+        <h1>Reset Password</h1>
         <form on onSubmit={handleSubmit}>
           <div className="form-group mb-3">
             <label htmlFor="InputEmail">Email</label>
@@ -56,31 +47,34 @@ const Login = () => {
               required
             />
           </div>
+
           <div className="form-group mb-3">
-            <label htmlFor="InputPassword1">Password</label>
+            <label htmlFor="InputAnswer">Security Answer</label>
+            <input
+              type="text"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              className="form-control"
+              id="InputAnswer1"
+              placeholder="Your Answer"
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label htmlFor="InputNewPassword1">Password</label>
             <input
               type="password"
               className="form-control"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              id="InputPassword1"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              id="InputNewPassword1"
               placeholder="Password"
               required
             />
           </div>
-          <div className="mb-3">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                navigate("/forgot-password");
-              }}
-            >
-              Forgot Password
-            </button>
-          </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            RESET
           </button>
         </form>
       </div>
@@ -88,4 +82,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Forgotpassword;
