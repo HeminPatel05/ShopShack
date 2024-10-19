@@ -1,5 +1,7 @@
 import express from "express";
 import {
+  brainTreePaymentController,
+  braintreeTokenController,
   createProductController,
   deleteProductController,
   getProductController,
@@ -15,6 +17,7 @@ import {
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
+import braintree from "braintree";
 
 const router = express.Router();
 
@@ -64,5 +67,12 @@ router.get("/related-product/:pid/:cid", realtedProductController);
 
 //category wise product
 router.get("/product-category/:slug", productCategoryController);
+
+//payment route
+//token
+router.get("/braintree/token", braintreeTokenController);
+
+//payment
+router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
 
 export default router;
