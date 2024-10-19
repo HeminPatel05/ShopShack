@@ -10,6 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [answer, setAnswer] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
 
   // form function
@@ -18,7 +19,7 @@ const Register = () => {
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/auth/register`,
-        { name, email, password, phone, answer }
+        { name, email, password, phone, answer, address }
       );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -85,6 +86,19 @@ const Register = () => {
               className="form-control"
               id="InputAnswer1"
               placeholder="Enter answer"
+              required
+            />
+          </div>
+
+          <div className="form-group mb-3">
+            <label htmlFor="InputAnswer">Address</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="form-control"
+              id="InputAddress1"
+              placeholder="Enter Address"
               required
             />
           </div>
