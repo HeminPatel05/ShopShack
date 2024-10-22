@@ -7,6 +7,8 @@ import useCategory from "../../hooks/useCategory";
 import SearchInput from "../Form/SearchInput";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
+import logo from "../../logo-2.png";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -38,16 +40,15 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              <GiShoppingBag />
-              Hidden brand
+              <img src={logo} alt="Logo" style={{ height: "45px" }} />
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink to="/" className="nav-link">
                   Home
                 </NavLink>
-              </li>
+              </li> */}
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -127,7 +128,7 @@ const Header = () => {
               <li className="nav-item">
                 <Badge count={cart?.length} showZero>
                   <NavLink to="/cart" className="nav-link">
-                    Cart
+                    <HiOutlineShoppingBag size={25} />
                   </NavLink>
                 </Badge>
               </li>

@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* margin-bottom: 20px; */
 }
 
 /* .poppins-thin {
@@ -37,7 +38,7 @@
 } */
 
 .navbar {
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   /* font-weight: 400;
   font-style: normal; */
   font-size: 17px;
@@ -117,4 +118,23 @@
 .product-link {
   text-decoration: none !important;
   color: black !important;
+}
+
+/* From here on custom CSS */
+.card {
+  height: 100%;
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+.card-text {
+  flex-grow: 1;
+}
+.btn {
+  margin-top: auto;
+}
+
+main {
+  margin-bottom: 20px;
 }
