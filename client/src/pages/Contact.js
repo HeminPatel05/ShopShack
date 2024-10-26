@@ -19,7 +19,8 @@ const Contact = () => {
             any query and info about product feel free to contact us
           </p>
           <p className="mt-3">
-            <BiMailSend /> : help@ecomapp.com
+            <BiMailSend /> :{" "}
+            <a href="mailto:support@shopshake.com">support@shopshake.com</a>.
           </p>
           <p className="mt-3">
             <BiPhoneCall /> : 1200-3456789

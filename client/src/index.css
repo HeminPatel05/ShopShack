@@ -121,9 +121,7 @@
 }
 
 /* From here on custom CSS */
-.card {
-  height: 100%;
-}
+
 .card-content {
   display: flex;
   flex-direction: column;
@@ -137,4 +135,30 @@
 
 main {
   margin-bottom: 20px;
+}
+
+.card-img-top {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  align-items: center;
+  padding: 10px;
+}
+
+.btn-secondary {
+  background-color: rgb(44, 123, 94);
+}
+
+.slick-dots li button:before {
+  font-size: 16px; /* Increase font size for larger dots */
+  color: #000000; /* Dot color */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff0000; /* Active dot color */
+}
+
+.card {
+  min-width: 300px; /* Fixed width for consistency */
+  min-height: 400px; /* Fixed height for consistency */
 }

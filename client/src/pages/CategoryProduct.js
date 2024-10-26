@@ -32,11 +32,7 @@ const CategoryProduct = () => {
           <div className="col-md-9 offset-1">
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
-                <div
-                  className="card m-2"
-                  style={{ width: "18rem" }}
-                  key={p._id}
-                >
+                <div className="card m-2" key={p._id}>
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
@@ -55,7 +51,7 @@ const CategoryProduct = () => {
                       More Details
                     </button>
                     <button className="btn btn-secondary ms-1">
-                      ADD TO CART
+                      Add to Cart
                     </button>
                   </div>
                 </div>

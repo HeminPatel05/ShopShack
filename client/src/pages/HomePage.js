@@ -144,48 +144,89 @@ const HomePage = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger"
+              className="btn btn-danger btn-reset"
               onClick={() => window.location.reload()}
             >
-              RESET FILTERS
+              CLEAR ALL
             </button>
           </div>
         </div>
-        <div className="col-md-9">
+        <div className="col-md-10">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
-              <div className="card m-2">
+              <div
+                key={p._id}
+                className="card m-2"
+                style={{
+                  width: "20rem",
+                  minHeight: "400px", // Set a fixed minimum height for the card
+                  maxWidth: "300px",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
                 <img
                   src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
+                  style={{ width: "100%", height: "auto" }}
                 />
-                <div className="card-body">
-                  <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                <div
+                  className="card-body"
+                  style={{
+                    flexGrow: 1,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <h5
+                    className="card-title"
+                    style={{
+                      whiteSpace: "nowrap", // Prevent wrapping
+                      overflow: "hidden", // Hide overflow text
+                      textOverflow: "ellipsis", // Add ellipsis for overflow text
+                    }}
+                  >
+                    {p.name}
+                  </h5>
+                  <p
+                    className="card-text"
+                    style={{
+                      whiteSpace: "normal", // Allow wrapping for description
+                      overflow: "hidden", // Hide overflow text
+                      textOverflow: "ellipsis", // Add ellipsis for overflow text
+                      flexGrow: 1,
+                    }}
+                  >
                     {p.description.substring(0, 30)}...
                   </p>
                   <p className="card-text"> $ {p.price}</p>
-                  <button
-                    class="btn btn-primary ms-1"
-                    onClick={() => navigate(`/product/${p.slug}`)}
-                  >
-                    More Details
-                  </button>
-                  <button
-                    class="btn btn-secondary ms-1"
-                    onClick={() => {
-                      setCart([...cart, p]);
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, p])
-                      );
-                      toast.success("Item Added to cart");
-                    }}
-                  >
-                    ADD TO CART
-                  </button>
+                  <div>
+                    <button
+                      className="btn btn-primary ms-1"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    <button
+                      className="btn btn-secondary ms-1"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item Added to cart");
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -199,7 +240,7 @@ const HomePage = () => {
                   setPage(page + 1);
                 }}
               >
-                {loading ? "Loading ..." : "Loadmore"}
+                {loading ? "Loading ..." : "Load More"}
               </button>
             )}
           </div>

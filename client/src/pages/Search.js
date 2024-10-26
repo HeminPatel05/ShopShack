@@ -27,15 +27,39 @@ const Search = () => {
                   alt={p.name}
                   width={"200px"}
                 />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                <div
+                  className="card-body"
+                  style={{
+                    flexGrow: 1,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <h5
+                    className="card-title"
+                    style={{
+                      whiteSpace: "nowrap", // Prevent wrapping
+                      overflow: "hidden", // Hide overflow text
+                      textOverflow: "ellipsis", // Add ellipsis for overflow text
+                    }}
+                  >
+                    {p.name}
+                  </h5>
+                  <p
+                    className="card-text"
+                    style={{
+                      whiteSpace: "normal", // Allow wrapping for description
+                      overflow: "hidden", // Hide overflow text
+                      textOverflow: "ellipsis", // Add ellipsis for overflow text
+                      flexGrow: 1,
+                    }}
+                  >
                     {p.description.substring(0, 30)}...
                   </p>
                   <p className="card-text"> $ {p.price}</p>
-                  <div className="mt-auto">
-                    {" "}
-                    {/* This pushes buttons to the bottom */}
+                  <div>
                     <button
                       className="btn btn-primary ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
@@ -53,7 +77,7 @@ const Search = () => {
                         toast.success("Item Added to cart");
                       }}
                     >
-                      ADD TO CART
+                      Add to Cart
                     </button>
                   </div>
                 </div>
